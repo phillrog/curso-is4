@@ -3,3 +3,13 @@
 ################################################################################
 
 /.vs
+/SkyCommerce.Loja/SkyCommerce.CrossCutting.Services/obj
+/SkyCommerce.Loja/SkyCommerce.CrossCutting.Services/bin/Debug/netstandard2.1
+/SkyCommerce.Loja/SkyCommerce.Data/obj
+/SkyCommerce.Loja/SkyCommerce.Data/bin/Debug/netstandard2.1
+/SkyCommerce.Loja/SkyCommerce.Domain/obj
+/SkyCommerce.Loja/SkyCommerce.Domain/bin/Debug/netstandard2.1
+/SkyCommerce.Loja/SkyCommerce.Site/obj
+/SkyCommerce.Loja/SkyCommerce.Site/bin/Debug/netcoreapp3.1
+/SkyCommerce.SSO/obj
+/SkyCommerce.SSO/bin/Debug/netcoreapp3.1
