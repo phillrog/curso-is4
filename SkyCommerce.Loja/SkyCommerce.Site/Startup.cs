@@ -12,6 +12,7 @@ using SkyCommerce.Site.Configure;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
+using System.Diagnostics;
 
 namespace SkyCommerce.Site
 {
@@ -32,7 +33,8 @@ namespace SkyCommerce.Site
             services.AddHttpContextAccessor();
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
-            IdentityModelEventSource.ShowPII = true;
+            if(Debugger.IsAttached)
+                IdentityModelEventSource.ShowPII = true;
             services.AddAuthentication(options =>
                 {
                     options.DefaultScheme = "Cookies";
