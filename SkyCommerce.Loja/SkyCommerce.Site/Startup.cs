@@ -12,7 +12,6 @@ using SkyCommerce.Site.Configure;
 using System.Globalization;
 using System.IdentityModel.Tokens.Jwt;
 using Microsoft.IdentityModel.Tokens;
-using System.Diagnostics;
 
 namespace SkyCommerce.Site
 {
@@ -28,13 +27,12 @@ namespace SkyCommerce.Site
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews().AddRazorRuntimeCompilation();
-            services.AddHttpClient();
+            services.AddControllersWithViews()
+                .AddRazorRuntimeCompilation();
             services.AddHttpContextAccessor();
 
             JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
-            if(Debugger.IsAttached)
-                IdentityModelEventSource.ShowPII = true;
+            IdentityModelEventSource.ShowPII = true;
             services.AddAuthentication(options =>
                 {
                     options.DefaultScheme = "Cookies";
@@ -45,11 +43,12 @@ namespace SkyCommerce.Site
                 {
                     options.Authority = "https://localhost:5001";
 
-                    options.ClientId = "18267ec4eedd47dcaa4c64ef6dda2bca";// 54e5c42087cc42a9be6bbf58e8200e9a";
-                    options.ClientSecret = "b6da9d8bdcc145d9b708684cc9b9513a";// "818b053f22d14335a98825c56007ae62"; //18267ec4eedd47dcaa4c64ef6dda2bca //b6da9d8bdcc145d9b708684cc9b9513a
+                    options.ClientId = "715000d0c10040258c1be259c09e3b91";
+                    options.ClientSecret = "360ceac2e80545dca6083fef4f94d09f";
                     options.ResponseType = "code";
                     options.Scope.Add("openid");
                     options.Scope.Add("profile");
+                    options.Scope.Add("api_frete");
                     options.SaveTokens = true;
                     options.GetClaimsFromUserInfoEndpoint = true;
 

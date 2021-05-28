@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SkyCommerce.Interfaces;
 using SkyCommerce.Models;
@@ -17,6 +19,7 @@ namespace SkyCommerce.Site.Controllers
         private readonly ICarrinhoService _carrinhoService;
         private readonly IGeoposicaoService _geoposicaoService;
         private readonly IPedidoService _pedidoService;
+        private readonly IHttpContextAccessor _httpContextAccessor;
 
         public CheckoutController(
             IEnderecoStore enderecoStore,
@@ -24,7 +27,9 @@ namespace SkyCommerce.Site.Controllers
             IFreteService freteService,
             ICarrinhoService carrinhoService,
             IGeoposicaoService geoposicaoService,
-            IPedidoService pedidoService)
+            IPedidoService pedidoService,
+            IHttpContextAccessor httpContextAccessor
+            )
         {
             _enderecoStore = enderecoStore;
             _carrinhoStore = carrinhoStore;
@@ -32,6 +37,7 @@ namespace SkyCommerce.Site.Controllers
             _carrinhoService = carrinhoService;
             _geoposicaoService = geoposicaoService;
             _pedidoService = pedidoService;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         [Route("dados-pagamento")]
@@ -90,8 +96,9 @@ namespace SkyCommerce.Site.Controllers
 
         public async Task<IActionResult> Index()
         {
+            var at = await _httpContextAccessor.HttpContext.GetTokenAsync("access_token");
             var carrinho = await _carrinhoStore.ObterCarrinho(User.Identity.Name);
-            var fretes = await _freteService.CalcularCarrinho(carrinho, await _geoposicaoService.GeolocalizarUsuario());
+            var fretes = await _freteService.CalcularCarrinho(carrinho, await _geoposicaoService.GeolocalizarUsuario(), at);
             return View(new CheckoutViewModel()
             {
                 OpcoesFrete = fretes,

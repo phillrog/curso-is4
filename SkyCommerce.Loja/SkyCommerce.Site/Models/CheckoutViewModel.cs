@@ -3,6 +3,7 @@ using SkyCommerce.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using SkyCommerce.ViewObjects;
 
 namespace SkyCommerce.Site.Models
 {

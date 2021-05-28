@@ -1,6 +1,7 @@
 ﻿using Bogus;
 using System.Collections.Generic;
 using System.Linq;
+using SkyCommerce.ViewObjects;
 
 namespace SkyCommerce.Models
 {

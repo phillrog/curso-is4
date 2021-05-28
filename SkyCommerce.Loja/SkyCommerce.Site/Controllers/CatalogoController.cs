@@ -47,7 +47,7 @@ namespace SkyCommerce.Site.Controllers
             var produtoDetails = await _produtoStore.ObterPorNome(produto);
             var produtosRelacionados = await _produtoStore.ObterPorCategoria(produtoDetails.Categorias.FirstOrDefault());
 
-            var frete = _freteService.CalcularFrete(produtoDetails.Embalagem, posicaoDoGuerreiro);
+            var frete = await _freteService.ObterModalidades(posicaoDoGuerreiro);
 
             return View(new ProdutoDetalhesViewModel()
             {

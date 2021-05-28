@@ -1,12 +1,12 @@
-﻿using System.Diagnostics;
-using Bogus;
+﻿using Bogus;
+using System.Diagnostics;
 
-namespace SkyCommerce.Models
+namespace SkyCommerce.ViewObjects
 {
     [DebuggerDisplay("{Modalidade} - {Valor}")]
     public class Frete
     {
-        public Frete(){}
+        public Frete() { }
         public Frete(string modalidade, string descricao, in decimal valor)
         {
             Modalidade = modalidade;
@@ -29,6 +29,11 @@ namespace SkyCommerce.Models
                 .RuleFor(f => f.Modalidade, f => f.Lorem.Word())
                 .RuleFor(f => f.Descricao, f => f.Lorem.Word())
                 .RuleFor(f => f.Valor, f => f.Random.Decimal(9, 100));
+        }
+
+        public static Frete FromViewModel(DetalhesFrete detalhesFrete)
+        {
+            return new Frete(detalhesFrete.Modalidade, detalhesFrete.Descricao, 0);
         }
     }
 }

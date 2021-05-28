@@ -1,4 +1,5 @@
 ﻿using SkyCommerce.Models;
+using SkyCommerce.ViewObjects;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -8,7 +9,7 @@ namespace SkyCommerce.Site.Models
     {
         public Produto Produto { get; set; }
         public IEnumerable<Produto> ProdutosRelacionados { get; set; }
-        public IEnumerable<Frete> OpcoesFrete { get; set; }
+        public IEnumerable<DetalhesFrete> OpcoesFrete { get; set; }
 
         public double NotaMedia()
         {

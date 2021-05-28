@@ -6,14 +6,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AspNetCore.IQueryable.Extensions" Version="3.1.7" />
-    <PackageReference Include="Bogus" Version="30.0.4" />
-    <PackageReference Include="Bogus.Tools.Analyzer" Version="30.0.4">
+    <PackageReference Include="AspNetCore.IQueryable.Extensions" Version="3.1.8" />
+    <PackageReference Include="Bogus" Version="31.0.3" />
+    <PackageReference Include="Bogus.Tools.Analyzer" Version="31.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="GeoCoordinate" Version="2.0.1" />
     <PackageReference Include="Humanizer.Core.pt" Version="2.8.26" />
+    <PackageReference Include="Refit" Version="5.2.1" />
   </ItemGroup>
 
 </Project>

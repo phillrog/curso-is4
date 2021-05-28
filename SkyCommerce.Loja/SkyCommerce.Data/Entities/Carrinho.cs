@@ -1,5 +1,6 @@
 ﻿using SkyCommerce.Models;
 using System.Collections.Generic;
+using SkyCommerce.ViewObjects;
 
 namespace SkyCommerce.Data.Entities
 {
